@@ -26,14 +26,28 @@ public:
 public slots:
 
     /**
-     * These functions will be called when the parameters are changed by the
+     * These functions will be called when the relevant parameters are changed by the
      * user.
      */
-//    void onIntParamChanged(const QString& varName, int val);
-//    void onDoubleParamChanged(const QString& varName, double val);
-//    void onStringParamChanged(const QString& varName, const QString& val);
-//    void onMultiValParamChanged(const QString& varName, const QString& val);
+    void onIntParamChanged(const QString& varName, int val);
+    void onDoubleParamChanged(const QString& varName, double val);
+    void onStringParamChanged(const QString& varName, const QString& val);
+    void onMultiValParamChanged(const QString& varName, const QString& val);
+    void onFilePathParamChanged(const QString &varName, const QString &path);
+    void onLineParamUpdated(const QString &varName, const QString frameViewerTitle, QLine line);
 
+
+private:
+
+    /**
+     * @brief convertToQImage
+     * @param mat   expects the cv::Mat pixel layout to be RGB. NoobaVSS provides it input
+     *              cv::Mat frames in RGB format.
+     * @return      returns a copy of QImage
+     */
+    QImage convertToQImage(const cv::Mat &mat);
+
+    const QString           windowTitle;
 
 };
 
